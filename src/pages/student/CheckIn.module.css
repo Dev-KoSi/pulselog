@@ -1,0 +1,352 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  padding: var(--space-5) var(--space-4);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+.muted {
+  color: var(--color-text-muted);
+}
+
+.textLink {
+  font-weight: 600;
+  text-align: center;
+}
+
+.label {
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.hint {
+  color: var(--color-text-muted);
+  font-size: 0.8125rem;
+  text-align: center;
+}
+
+/* --- Session summary ---------------------------------------------- */
+
+.summary {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.courseCode {
+  color: var(--color-primary);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.courseTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.summaryMeta {
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+}
+
+/* --- Roster confirmation -------------------------------------------- */
+
+.studentCard {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-success-soft);
+  border: 1px solid var(--color-success-ring);
+  border-radius: var(--radius-md);
+  animation: fadeIn 0.2s ease-out;
+}
+
+.studentText {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.stepLabel {
+  color: var(--color-success-text);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.studentName {
+  font-size: 1.125rem;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.studentIndex {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.studentMeta {
+  color: var(--color-text-muted);
+  font-size: 0.8125rem;
+}
+
+.changeButton {
+  flex-shrink: 0;
+}
+
+.verified {
+  color: var(--color-success-text);
+}
+
+.submit {
+  min-height: 52px;
+  font-size: 1rem;
+}
+
+/* --- Success ------------------------------------------------------- */
+
+.success {
+  align-items: center;
+  text-align: center;
+}
+
+.photoBadge {
+  position: relative;
+  width: 112px;
+  height: 112px;
+  animation: pop 0.35s cubic-bezier(0.2, 1.4, 0.4, 1);
+}
+
+.photoBadge img {
+  width: 100%;
+  height: 100%;
+  border: 4px solid var(--color-surface);
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px var(--color-success), var(--shadow-md);
+  object-fit: cover;
+}
+
+.badgeCheck {
+  position: absolute;
+  right: 2px;
+  bottom: 2px;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border: 3px solid var(--color-surface);
+  border-radius: 50%;
+  background: var(--color-success);
+  color: #ffffff;
+}
+
+.mono {
+  font-family: var(--font-mono);
+}
+
+.successTitle {
+  font-size: 1.5rem;
+}
+
+.receipt {
+  display: grid;
+  width: 100%;
+  margin: 0;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  text-align: left;
+}
+
+.receipt > div {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  border-top: 1px solid var(--color-border);
+}
+
+.receipt > div:first-child {
+  border-top: 0;
+}
+
+.receipt dt {
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+}
+
+.receipt dd {
+  margin: 0;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+  text-align: right;
+}
+
+.footnote {
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+}
+
+@media (min-width: 480px) {
+  .card {
+    padding: var(--space-6);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes pop {
+  from {
+    transform: scale(0.4);
+    opacity: 0;
+  }
+}
+
+/* --- Live code step -------------------------------------------------- */
+
+.codeStep {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.codeIntro {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+}
+
+.codeIcon {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  background: var(--color-primary-soft);
+  border-radius: 50%;
+  color: var(--color-primary);
+}
+
+.codeTitle {
+  font-size: 1.0625rem;
+  font-weight: 700;
+}
+
+.codeHint {
+  margin-top: 2px;
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+}
+
+.codeField input {
+  font-family: var(--font-mono);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-align: center;
+}
+
+.checking {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-5) 0;
+  color: var(--color-text-muted);
+  font-weight: 600;
+}
+
+.spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--color-border-strong);
+  border-top-color: var(--color-primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* --- Location step --------------------------------------------------- */
+
+.locStep {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4) var(--space-4);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  animation: fadeIn 0.2s ease-out;
+}
+
+.locHead {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+}
+
+.locIcon {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  background: var(--color-primary-soft);
+  border-radius: 50%;
+  color: var(--color-primary);
+}
+
+.locText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.locTitle {
+  font-weight: 700;
+}
+
+.locHint {
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+}
+
+.locOk {
+  flex-direction: row;
+  align-items: center;
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-success-soft);
+  border-color: var(--color-success-ring);
+}
+
+.locOk .locIcon {
+  background: var(--color-success);
+  color: #ffffff;
+}
+
+.locOk .locTitle {
+  color: var(--color-success-text);
+}

@@ -1,0 +1,26 @@
+.alert {
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-sm);
+  font-size: 0.9375rem;
+  border: 1px solid transparent;
+}
+
+.info {
+  background: var(--color-primary-soft);
+  color: var(--color-primary-hover);
+}
+
+.success {
+  background: var(--color-success-soft);
+  color: var(--color-success-text);
+}
+
+.warning {
+  background: var(--color-warning-soft);
+  color: var(--color-warning);
+}
+
+.danger {
+  background: var(--color-danger-soft);
+  color: var(--color-danger);
+}

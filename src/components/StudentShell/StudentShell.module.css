@@ -1,0 +1,22 @@
+.page {
+  min-height: 100dvh;
+  background:
+    radial-gradient(120% 50% at 50% 0%, var(--color-primary-soft) 0%, transparent 70%),
+    var(--color-bg);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  padding: var(--space-5) var(--space-4) calc(var(--space-6) + env(safe-area-inset-bottom));
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding-top: var(--space-7);
+  }
+}

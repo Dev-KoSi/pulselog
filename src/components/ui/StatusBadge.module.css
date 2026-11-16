@@ -1,0 +1,39 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 10px;
+  border-radius: var(--radius-pill);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.badge::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.active {
+  background: var(--color-success-soft);
+  color: var(--color-success-text);
+}
+
+.active::before {
+  background: var(--color-success);
+}
+
+.expired {
+  background: var(--color-warning-soft);
+  color: var(--color-warning);
+}
+
+.closed {
+  background: var(--color-surface-muted);
+  color: var(--color-text-muted);
+}

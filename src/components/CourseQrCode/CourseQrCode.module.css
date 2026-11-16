@@ -1,0 +1,87 @@
+/* The QR is a button: click to open the projector view. */
+.frame {
+  position: relative;
+  display: block;
+  width: 100%;
+  max-width: 220px;
+  margin: 0 auto;
+  padding: var(--space-2);
+  background: #ffffff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  color: inherit;
+  font: inherit;
+  cursor: zoom-in;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease,
+    transform 0.15s ease;
+}
+
+.frame:hover {
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+.frame:focus-visible {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-focus-ring);
+}
+
+.code {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Live code sits under the QR, inside the clickable frame. */
+.live {
+  display: block;
+  padding: 2px 6px 4px;
+}
+
+.inactive .code {
+  opacity: 0.18;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+/* "Fullscreen" chip: always visible on touch screens, appears on hover/focus with a mouse. */
+.expandHint {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 8px;
+  background: rgb(15 23 42 / 0.82);
+  border-radius: var(--radius-pill);
+  color: #ffffff;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  pointer-events: none;
+  transition: opacity 0.15s ease;
+}
+
+@media (hover: hover) {
+  .expandHint {
+    opacity: 0;
+  }
+
+  .frame:hover .expandHint,
+  .frame:focus-visible .expandHint {
+    opacity: 1;
+  }
+}

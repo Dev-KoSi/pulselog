@@ -1,0 +1,281 @@
+/* Projector view: white page, brand bar on top, the QR as large as the screen allows. */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  padding: max(var(--space-3), env(safe-area-inset-top)) var(--gutter) max(var(--space-3), env(safe-area-inset-bottom));
+  overflow-y: auto;
+  background:
+    radial-gradient(1200px 500px at 50% -10%, rgb(37 99 235 / 0.08), transparent 70%),
+    radial-gradient(900px 400px at 50% 110%, rgb(16 185 129 / 0.08), transparent 70%),
+    var(--color-bg);
+  color: var(--color-text);
+  animation: fadeIn 0.18s ease-out;
+}
+
+/* In native fullscreen the element itself is the page; keep the same background. */
+.backdrop:fullscreen {
+  background-color: var(--color-bg);
+}
+
+.topBar {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.exit {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: var(--tap-target);
+  padding: 0 var(--space-4);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-sm);
+  color: var(--color-text);
+  font: inherit;
+  font-size: 0.9375rem;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.exit:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.exit:focus-visible {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-focus-ring);
+}
+
+.body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  padding: var(--space-4) 0;
+  text-align: center;
+}
+
+.headingBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.heading {
+  font-size: clamp(1.75rem, 1.2rem + 2.5vw, 3rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.subheading {
+  color: var(--color-text-muted);
+  font-size: clamp(1rem, 0.9rem + 0.6vw, 1.375rem);
+}
+
+/* Square side: as big as fits under the header/text on short screens, never wider than the viewport. */
+.qr {
+  position: relative;
+  width: clamp(200px, min(88vw, 100dvh - 460px), 760px);
+  padding: clamp(10px, 1.5vw, 20px);
+  background: #ffffff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow:
+    0 0 0 6px rgb(255 255 255 / 0.9),
+    0 0 0 7px var(--color-border),
+    0 20px 50px rgb(15 23 42 / 0.12);
+  cursor: zoom-out;
+}
+
+.qr:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 6px rgb(255 255 255 / 0.9),
+    0 0 0 9px var(--color-primary);
+}
+
+.qrSvg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.qrInactive .qrSvg {
+  opacity: 0.18;
+}
+
+.closedTag {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: var(--color-text-muted);
+  font-size: clamp(1rem, 0.8rem + 1vw, 1.5rem);
+  font-weight: 800;
+}
+
+.instruction {
+  font-size: clamp(1rem, 0.9rem + 0.5vw, 1.25rem);
+  font-weight: 650;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2) var(--space-4);
+  max-width: 100%;
+}
+
+.sessionCode {
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  padding: 4px 14px;
+  background: var(--color-primary-soft);
+  border-radius: var(--radius-pill);
+  color: var(--color-primary);
+  font-family: var(--font-mono);
+  font-size: clamp(1rem, 0.85rem + 0.8vw, 1.5rem);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.metaLabel {
+  font-family: var(--font-sans);
+  font-size: 0.6875rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.url {
+  max-width: 100%;
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+  font-size: clamp(0.8125rem, 0.75rem + 0.3vw, 1rem);
+  overflow-wrap: anywhere;
+}
+
+.hint {
+  flex-shrink: 0;
+  color: var(--color-text-muted);
+  font-size: 0.8125rem;
+  text-align: center;
+}
+
+.hint kbd {
+  padding: 1px 6px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-strong);
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+}
+
+/* Touch screens have no Esc key; the Exit button and tapping the code are enough.
+   Short screens drop the hint too, to leave the room for the QR. */
+@media (hover: none), (max-height: 760px) {
+  .hint {
+    display: none;
+  }
+}
+
+/* Phones: drop the wordmark text size a touch so the Exit button fits beside it. */
+@media (max-width: 380px) {
+  .exit {
+    padding: 0 var(--space-3);
+    font-size: 0.875rem;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+}
+
+.lockNotice {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  background: var(--color-success-soft);
+  border-radius: var(--radius-pill);
+  color: var(--color-success-text);
+  font-size: clamp(0.8125rem, 0.75rem + 0.3vw, 1rem);
+  font-weight: 650;
+}
+
+.liveWrap {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+/* Projectors and laptops (wide, short): QR on the left as tall as the screen allows,
+   course details + live code on the right. */
+@media (min-width: 900px) and (min-aspect-ratio: 5/4) {
+  .body {
+    display: grid;
+    grid-template-columns: auto minmax(0, 440px);
+    grid-template-areas:
+      'qr heading'
+      'qr instruction'
+      'qr live'
+      'qr lock'
+      'qr meta';
+    align-content: center;
+    justify-content: center;
+    column-gap: clamp(32px, 4vw, 64px);
+    row-gap: var(--space-4);
+    text-align: left;
+  }
+
+  .headingBlock {
+    grid-area: heading;
+    align-self: end;
+  }
+
+  .qr {
+    grid-area: qr;
+    align-self: center;
+    width: clamp(240px, min(50vw, 100dvh - 150px), 820px);
+  }
+
+  .instruction {
+    grid-area: instruction;
+  }
+
+  .liveWrap {
+    grid-area: live;
+    justify-content: flex-start;
+    --live-align: flex-start;
+    --live-text-align: left;
+  }
+
+  .lockNotice {
+    grid-area: lock;
+    justify-self: start;
+  }
+
+  .meta {
+    grid-area: meta;
+    flex-direction: column;
+    align-items: flex-start;
+    align-self: start;
+  }
+}

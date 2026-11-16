@@ -1,0 +1,85 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 100%;
+}
+
+.row {
+  display: flex;
+  align-items: baseline;
+  /* Parents can left-align it (e.g. the projector's side-by-side layout). */
+  justify-content: var(--live-align, center);
+  gap: var(--space-2);
+}
+
+.label {
+  color: var(--color-text-muted);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.code {
+  color: var(--color-text);
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  font-variant-numeric: tabular-nums;
+}
+
+.seconds {
+  min-width: 2.5ch;
+  color: var(--color-text-muted);
+  font-size: 0.75rem;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+.track {
+  display: block;
+  height: 4px;
+  overflow: hidden;
+  background: var(--color-surface-muted);
+  border-radius: var(--radius-pill);
+}
+
+.bar {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-success));
+  border-radius: inherit;
+  transform-origin: left center;
+  transition: transform 1s linear;
+}
+
+.caption {
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+  text-align: var(--live-text-align, center);
+}
+
+/* Projector size */
+.lg {
+  gap: var(--space-2);
+  width: min(100%, 520px);
+}
+
+.lg .label {
+  font-size: 0.8125rem;
+}
+
+.lg .code {
+  font-size: clamp(1.75rem, 1.2rem + 2.2vw, 2.75rem);
+  letter-spacing: 0.08em;
+}
+
+.lg .seconds {
+  font-size: 1rem;
+}
+
+.lg .track {
+  height: 6px;
+}
